@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Minesneaker.Tests;
+namespace Minesneaker.Tests.Helpers;
 
 public class TestInput : IConsoleReader
 {

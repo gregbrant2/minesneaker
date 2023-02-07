@@ -7,6 +7,7 @@ using IHost host = Host.CreateDefaultBuilder(args)
     {
         services.AddHostedService<MinesneakerHost>();
         services.AddTransient<IGameController, GameController>();
+        services.AddTransient<IPlayerPrompts, PlayerPrompts>();
 
         services.AddTransient<IGameInput, GameInput>();
         services.AddTransient<IConsoleReader, ConsoleReader>();

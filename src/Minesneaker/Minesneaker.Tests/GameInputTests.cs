@@ -1,3 +1,5 @@
+using Minesneaker.Tests.Helpers;
+
 namespace Minesneaker.Tests;
 
 public class GameInputTests
@@ -11,7 +13,7 @@ public class GameInputTests
     {
         var testInput = new TestInput(key);
         var input = new GameInput(testInput);
-
+        
         var command = input.ReadCommand();
 
         Assert.Equal(expected, command);
