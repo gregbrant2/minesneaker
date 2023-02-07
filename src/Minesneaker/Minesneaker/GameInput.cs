@@ -26,4 +26,6 @@ public class GameInput : IGameInput
 
         return _commands[key.Key];
     }
+
+    public void WaitForKey() => _consoleReader.ReadKey();
 }

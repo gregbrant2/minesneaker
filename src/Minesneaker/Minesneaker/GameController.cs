@@ -41,6 +41,7 @@ public class GameController : IGameController
                 {
                     _playerPrompts.Boom();
                     _playerPrompts.PromptForNewGame();
+                    _input.WaitForKey();
                 }
             }
         }
