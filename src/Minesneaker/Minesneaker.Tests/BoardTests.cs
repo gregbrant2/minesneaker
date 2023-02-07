@@ -1,3 +1,4 @@
+using System.Text;
 using Moq;
 
 namespace Minesneaker.Tests
@@ -39,6 +40,36 @@ namespace Minesneaker.Tests
 
     public interface IGameInput
     {
+    }
+
+    public class GameInputTests
+    {
+        [Fact]
+        public void Foo()
+        {
+            var testInput = new TestInput();
+            var input = new GameInput(testInput);
+        }
+    }
+
+    public class TestInput : TextReader
+    {
+        private readonly MemoryStream _stream = new();
+
+        public void Write(string data)
+        {
+            _stream.Write(Encoding.ASCII.GetBytes(data));
+        }
+    }
+
+    class GameInput : IGameInput
+    {
+        private readonly TextReader _stream;
+
+        public GameInput(TextReader stream)
+        {
+            _stream = stream;
+        }
     }
 
     public class BoardTests
