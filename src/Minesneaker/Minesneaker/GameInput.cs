@@ -27,13 +27,3 @@ public class GameInput : IGameInput
         return _commands[key.Key];
     }
 }
-
-public interface IConsoleReader
-{
-    ConsoleKeyInfo ReadKey();
-}
-
-class ConsoleReader : IConsoleReader
-{
-    public ConsoleKeyInfo ReadKey() => Console.ReadKey();
-}

@@ -9,7 +9,6 @@ public class PlayerPrompts : IPlayerPrompts
         _writer = writer;
     }
 
-
     public void PromptForMovement()
     {
         _writer.Write("Press an arrow key to move");

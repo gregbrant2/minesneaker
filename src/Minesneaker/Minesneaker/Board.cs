@@ -1,5 +1,3 @@
-using System.Runtime.CompilerServices;
-
 namespace Minesneaker;
 
 public class Board
