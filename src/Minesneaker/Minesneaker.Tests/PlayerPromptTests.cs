@@ -1,3 +1,5 @@
+using Minesneaker.Tests.Helpers;
+
 namespace Minesneaker.Tests;
 
 public class PlayerPromptTests
