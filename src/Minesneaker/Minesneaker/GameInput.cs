@@ -8,4 +8,9 @@ class GameInput : IGameInput
     {
         _stream = stream;
     }
+
+    public Task<InputCommand> ReadCommandAsync()
+    {
+        throw new NotImplementedException();
+    }
 }

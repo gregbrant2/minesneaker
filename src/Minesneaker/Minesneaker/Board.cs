@@ -13,4 +13,9 @@ public class Board
     }
 
     public (char, int) CurrentPosition => ((char)(OffsetToA + _xPos), _yPos);
+
+    public PlayerState Apply(InputCommand command)
+    {
+        throw new NotImplementedException();
+    }
 }

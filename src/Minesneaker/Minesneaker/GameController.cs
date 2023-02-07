@@ -12,8 +12,16 @@ public class GameController : IGameController
         _renderer = renderer;
     }
 
-    public void NewGame()
+    public async Task NewGameAsync()
     {
         _board = new Board();
+
+        var state = PlayerState.Alive;
+        while (state == PlayerState.Alive)
+        {
+            var command = await _input.ReadCommandAsync();
+            state = _board.Apply(command);
+            _renderer.Render(_board);
+        }
     }
 }
