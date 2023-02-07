@@ -10,11 +10,13 @@ public class MinesneakerHost : IHostedService
         _gameController = gameController;
     }
 
-    public async Task StartAsync(CancellationToken cancellationToken)
+    public Task StartAsync(CancellationToken cancellationToken)
     {
         Console.WriteLine("Hello, Minesneaker!");
 
-        await _gameController.NewGameAsync();
+        _gameController.NewGame();
+     
+        return Task.CompletedTask;
     }
 
     public Task StopAsync(CancellationToken cancellationToken)

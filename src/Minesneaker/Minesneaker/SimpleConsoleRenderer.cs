@@ -11,6 +11,6 @@ public class SimpleConsoleRenderer : IGameRenderer
 
     public void Render(Board board)
     {
-        _writer.Write($"Player is at {board.CurrentPosition}");
+        _writer.WriteLine($"Player is at {board.CurrentPosition}");
     }
 }

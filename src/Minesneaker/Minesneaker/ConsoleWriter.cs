@@ -1,4 +1,4 @@
 ﻿class ConsoleWriter : IConsoleWriter
 {
-    public void Write(string data) => Console.WriteLine(data);
+    public void WriteLine(string data) => Console.WriteLine(data);
 }

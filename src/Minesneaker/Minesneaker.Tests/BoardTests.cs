@@ -5,7 +5,8 @@ namespace Minesneaker.Tests
         [Fact]
         public void NewBoard_InitialisesDefaultPosition()
         {
-            var board = new Board();
+            var cells = BuildCells(2, 2);
+            var board = new Board(cells);
 
             Assert.Equal(('A', 1), board.CurrentPosition);
         }
@@ -13,7 +14,8 @@ namespace Minesneaker.Tests
         [Fact]
         public void Apply_MoveDown()
         {
-            var board = new Board();
+            var cells = BuildCells(2, 2);
+            var board = new Board(cells);
 
             board.Apply(InputCommand.MoveDown);
 
@@ -23,7 +25,8 @@ namespace Minesneaker.Tests
         [Fact]
         public void Apply_MoveRight()
         {
-            var board = new Board();
+            var cells = BuildCells(2, 2);
+            var board = new Board(cells);
 
             board.Apply(InputCommand.MoveRight);
 
@@ -33,7 +36,8 @@ namespace Minesneaker.Tests
         [Fact]
         public void Apply_MoveUp()
         {
-            var board = new Board();
+            var cells = BuildCells(2, 2);
+            var board = new Board(cells);
             board.Apply(InputCommand.MoveDown);
             Assert.Equal(('A', 2), board.CurrentPosition);
 
@@ -45,7 +49,8 @@ namespace Minesneaker.Tests
         [Fact]
         public void Apply_MoveLeft()
         {
-            var board = new Board();
+            var cells = BuildCells(2, 2);
+            var board = new Board(cells);
 
             board.Apply(InputCommand.MoveRight);
             Assert.Equal(('B', 1), board.CurrentPosition);
@@ -58,7 +63,8 @@ namespace Minesneaker.Tests
         [Fact]
         public void MovePastLeftBound()
         {
-            var board = new Board();
+            var cells = BuildCells(2, 2);
+            var board = new Board(cells);
 
             Assert.Equal(('A', 1), board.CurrentPosition);
             board.Apply(InputCommand.MoveLeft);
@@ -69,26 +75,22 @@ namespace Minesneaker.Tests
         [Fact]
         public void MovePastRightBound()
         {
-            var board = new Board();
+            var cells = BuildCells(2, 2);
+            var board = new Board(cells);
 
             board.Apply(InputCommand.MoveRight);
-            board.Apply(InputCommand.MoveRight);
-            board.Apply(InputCommand.MoveRight);
-            board.Apply(InputCommand.MoveRight);
-            board.Apply(InputCommand.MoveRight);
-            board.Apply(InputCommand.MoveRight);
+
+            Assert.Equal(('B', 1), board.CurrentPosition);
             board.Apply(InputCommand.MoveRight);
 
-            Assert.Equal(('H', 1), board.CurrentPosition);
-            board.Apply(InputCommand.MoveRight);
-
-            Assert.Equal(('H', 1), board.CurrentPosition);
+            Assert.Equal(('B', 1), board.CurrentPosition);
         }
 
         [Fact]
         public void MovePastTopBound()
         {
-            var board = new Board();
+            var cells = BuildCells(2, 2);
+            var board = new Board(cells);
 
             Assert.Equal(('A', 1), board.CurrentPosition);
             board.Apply(InputCommand.MoveUp);
@@ -99,20 +101,31 @@ namespace Minesneaker.Tests
         [Fact]
         public void MovePastBottomBound()
         {
-            var board = new Board();
+            var cells = BuildCells(2, 2);
+            var board = new Board(cells);
 
             board.Apply(InputCommand.MoveDown);
-            board.Apply(InputCommand.MoveDown);
-            board.Apply(InputCommand.MoveDown);
-            board.Apply(InputCommand.MoveDown);
-            board.Apply(InputCommand.MoveDown);
-            board.Apply(InputCommand.MoveDown);
+
+            Assert.Equal(('A', 2), board.CurrentPosition);
             board.Apply(InputCommand.MoveDown);
 
-            Assert.Equal(('A', 8), board.CurrentPosition);
-            board.Apply(InputCommand.MoveDown);
+            Assert.Equal(('A', 2), board.CurrentPosition);
+        }
 
-            Assert.Equal(('A', 8), board.CurrentPosition);
+        private Dictionary<int, Dictionary<int, CellState>> BuildCells(int width, int height)
+        {
+            var cells = new Dictionary<int, Dictionary<int, CellState>>();
+            for (int x = 0; x < width; x++)
+            {
+                cells.Add(x, new Dictionary<int, CellState>());
+
+                for (int y = 0; y < height; y++)
+                {
+                    cells[x].Add(y, CellState.Safe);
+                }
+            }
+
+            return cells;
         }
     }
 }

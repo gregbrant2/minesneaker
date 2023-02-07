@@ -2,10 +2,10 @@ namespace Minesneaker.Tests.Helpers;
 
 public class FakeConsoleWriter : IConsoleWriter
 {
-    public void Write(string data)
+    public void WriteLine(string data)
     {
-        Data = data;
+        Data += data + Environment.NewLine;
     }
 
-    public string? Data { get; set; }
+    public string Data { get; set; } = string.Empty;
 }

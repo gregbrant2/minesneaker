@@ -10,9 +10,34 @@ public class PlayerPromptTests
         var writer = new FakeConsoleWriter();
         var prompts = new PlayerPrompts(writer);
 
-        Assert.Null(writer.Data);
         prompts.PromptForMovement();
 
-        Assert.Equal("Press an arrow key to move", writer.Data);
+        Assert.Equal("Press an arrow key to move" + Environment.NewLine, writer.Data);
+    }
+
+    [Fact]
+    public void PromptForNewGame()
+    {
+        var writer = new FakeConsoleWriter();
+        var prompts = new PlayerPrompts(writer);
+
+        prompts.PromptForNewGame();
+
+        Assert.Equal("Press any key to start a new game..." + Environment.NewLine, writer.Data);
+    }
+
+    [Fact]
+    public void Boom()
+    {
+        var writer = new FakeConsoleWriter();
+        var prompts = new PlayerPrompts(writer);
+
+        prompts.Boom();
+
+        Assert.Equal(@"
+   BOOM!    
+
+
+You died ;(" + Environment.NewLine, writer.Data);
     }
 }

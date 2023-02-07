@@ -1,4 +1,4 @@
 ﻿public interface IConsoleWriter
 {
-    void Write(string data);
+    void WriteLine(string data);
 }

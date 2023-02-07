@@ -20,17 +20,29 @@ public class GameController : IGameController
         _renderer = renderer;
     }
 
-    public async Task NewGameAsync()
+    public void NewGame()
     {
-        _board = _boardFactory.Create();
-        
-        var state = PlayerState.Alive;
-        while (state == PlayerState.Alive)
+        while (true)
         {
-            _playerPrompts.PromptForMovement();
-            var command = _input.ReadCommand();
-            state = _board.Apply(command);
-            _renderer.Render(_board);
+            _board = _boardFactory.Create();
+
+            var state = PlayerState.Alive;
+            while (state == PlayerState.Alive)
+            {
+                _playerPrompts.PromptForMovement();
+                var command = _input.ReadCommand();
+                state = _board.Apply(command);
+
+                if (state == PlayerState.Alive)
+                {
+                    _renderer.Render(_board);
+                }
+                else
+                {
+                    _playerPrompts.Boom();
+                    _playerPrompts.PromptForNewGame();
+                }
+            }
         }
     }
 }
