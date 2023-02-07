@@ -12,6 +12,7 @@ using IHost host = Host.CreateDefaultBuilder(args)
         services.AddTransient<IConsoleReader, ConsoleReader>();
 
         services.AddTransient<IGameRenderer, SimpleConsoleRenderer>();
+        services.AddTransient<IConsoleWriter, ConsoleWriter>();
     })
     .Build();
 
