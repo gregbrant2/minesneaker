@@ -19,7 +19,7 @@ public class GameController : IGameController
         var state = PlayerState.Alive;
         while (state == PlayerState.Alive)
         {
-            var command = await _input.ReadCommandAsync();
+            var command = _input.ReadCommand();
             state = _board.Apply(command);
             _renderer.Render(_board);
         }

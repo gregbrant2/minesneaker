@@ -2,15 +2,38 @@ namespace Minesneaker;
 
 public class GameInput : IGameInput
 {
-    private readonly TextReader _stream;
-
-    public GameInput(TextReader stream)
+    readonly Dictionary<ConsoleKey, InputCommand> _commands = new()
     {
-        _stream = stream;
+        {ConsoleKey.UpArrow, InputCommand.MoveUp},
+        {ConsoleKey.DownArrow, InputCommand.MoveDown},
+        {ConsoleKey.LeftArrow, InputCommand.MoveLeft},
+        {ConsoleKey.RightArrow, InputCommand.MoveRight},
+    };
+    private readonly IConsoleReader _consoleReader;
+
+    public GameInput(IConsoleReader consoleReader)
+    {
+        _consoleReader = consoleReader;
     }
 
-    public Task<InputCommand> ReadCommandAsync()
+    public InputCommand ReadCommand()
     {
-        throw new NotImplementedException();
+        var key = _consoleReader.ReadKey();
+        while (!_commands.ContainsKey(key.Key))
+        {
+            key = _consoleReader.ReadKey();
+        }
+
+        return _commands[key.Key];
     }
+}
+
+public interface IConsoleReader
+{
+    ConsoleKeyInfo ReadKey();
+}
+
+class ConsoleReader : IConsoleReader
+{
+    public ConsoleKeyInfo ReadKey() => Console.ReadKey();
 }

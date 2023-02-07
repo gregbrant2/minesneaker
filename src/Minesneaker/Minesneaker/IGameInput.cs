@@ -2,9 +2,14 @@ namespace Minesneaker;
 
 public interface IGameInput
 {
-    Task<InputCommand> ReadCommandAsync();
+    InputCommand ReadCommand();
 }
 
-public class InputCommand
+public enum InputCommand
 {
+    NotSet = 0,
+    MoveUp,
+    MoveDown,
+    MoveLeft,
+    MoveRight
 }

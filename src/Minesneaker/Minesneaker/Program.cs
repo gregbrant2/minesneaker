@@ -9,7 +9,7 @@ using IHost host = Host.CreateDefaultBuilder(args)
         services.AddTransient<IGameController, GameController>();
 
         services.AddTransient<IGameInput, GameInput>();
-        services.AddTransient(_ => Console.In);
+        services.AddTransient<IConsoleReader, ConsoleReader>();
 
         services.AddTransient<IGameRenderer, SimpleConsoleRenderer>();
     })
