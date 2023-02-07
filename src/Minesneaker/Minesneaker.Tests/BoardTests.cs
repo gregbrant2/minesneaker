@@ -54,5 +54,65 @@ namespace Minesneaker.Tests
 
             Assert.Equal(('A', 1), board.CurrentPosition);
         }
+
+        [Fact]
+        public void MovePastLeftBound()
+        {
+            var board = new Board();
+
+            Assert.Equal(('A', 1), board.CurrentPosition);
+            board.Apply(InputCommand.MoveLeft);
+
+            Assert.Equal(('A', 1), board.CurrentPosition);
+        }
+
+        [Fact]
+        public void MovePastRightBound()
+        {
+            var board = new Board();
+
+            board.Apply(InputCommand.MoveRight);
+            board.Apply(InputCommand.MoveRight);
+            board.Apply(InputCommand.MoveRight);
+            board.Apply(InputCommand.MoveRight);
+            board.Apply(InputCommand.MoveRight);
+            board.Apply(InputCommand.MoveRight);
+            board.Apply(InputCommand.MoveRight);
+
+            Assert.Equal(('H', 1), board.CurrentPosition);
+            board.Apply(InputCommand.MoveRight);
+
+            Assert.Equal(('H', 1), board.CurrentPosition);
+        }
+
+        [Fact]
+        public void MovePastTopBound()
+        {
+            var board = new Board();
+
+            Assert.Equal(('A', 1), board.CurrentPosition);
+            board.Apply(InputCommand.MoveUp);
+
+            Assert.Equal(('A', 1), board.CurrentPosition);
+        }
+
+        [Fact]
+        public void MovePastBottomBound()
+        {
+            var board = new Board();
+
+            board.Apply(InputCommand.MoveDown);
+            board.Apply(InputCommand.MoveDown);
+            board.Apply(InputCommand.MoveDown);
+            board.Apply(InputCommand.MoveDown);
+            board.Apply(InputCommand.MoveDown);
+            board.Apply(InputCommand.MoveDown);
+            board.Apply(InputCommand.MoveDown);
+
+            Assert.Equal(('A', 8), board.CurrentPosition);
+            board.Apply(InputCommand.MoveDown);
+
+            Assert.Equal(('A', 8), board.CurrentPosition);
+        }
     }
 }

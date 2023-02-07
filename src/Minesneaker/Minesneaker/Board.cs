@@ -24,13 +24,13 @@ public class Board
                 if (_yPos > 1) _yPos--;
                 break;
             case InputCommand.MoveDown:
-                if (_yPos < Height - 1) _yPos++;
+                if (_yPos < Height) _yPos++;
                 break;
             case InputCommand.MoveLeft:
                 if (_xPos > 1) _xPos--;
                 break;
             case InputCommand.MoveRight:
-                if (_xPos < Width - 1) _xPos++;
+                if (_xPos < Width) _xPos++;
                 break;
         }
 
