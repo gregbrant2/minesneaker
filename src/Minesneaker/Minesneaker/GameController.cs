@@ -1,6 +1,6 @@
 namespace Minesneaker;
 
-public class GameController
+public class GameController : IGameController
 {
     private readonly IGameInput _input;
     private readonly IGameRenderer _renderer;
