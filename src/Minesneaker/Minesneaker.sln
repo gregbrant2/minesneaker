@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesneaker", "Minesneaker\Minesneaker.csproj", "{CBEB7090-4557-41AC-BCD7-F2FBC7648678}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesneaker.Tests", "Minesneaker.Tests\Minesneaker.Tests.csproj", "{AB5A9DF2-3DBB-4A3E-ACFE-51C4D30FCEC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CBEB7090-4557-41AC-BCD7-F2FBC7648678}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBEB7090-4557-41AC-BCD7-F2FBC7648678}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBEB7090-4557-41AC-BCD7-F2FBC7648678}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB5A9DF2-3DBB-4A3E-ACFE-51C4D30FCEC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB5A9DF2-3DBB-4A3E-ACFE-51C4D30FCEC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB5A9DF2-3DBB-4A3E-ACFE-51C4D30FCEC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB5A9DF2-3DBB-4A3E-ACFE-51C4D30FCEC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
