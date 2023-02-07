@@ -1,6 +1,6 @@
 namespace Minesneaker;
 
-class GameInput : IGameInput
+public class GameInput : IGameInput
 {
     private readonly TextReader _stream;
 

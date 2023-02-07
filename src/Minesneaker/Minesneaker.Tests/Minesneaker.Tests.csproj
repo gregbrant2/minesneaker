@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Minesneaker\Minesneaker.csproj" />
+  </ItemGroup>
+
 </Project>
