@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
-using Minesneaker;
+
+namespace Minesneaker;
 
 public class MinesneakerHost : IHostedService
 {

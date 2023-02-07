@@ -1,4 +1,4 @@
-﻿using Minesneaker;
+﻿namespace Minesneaker;
 
 public class SimpleConsoleRenderer : IGameRenderer
 {
